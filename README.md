@@ -19,7 +19,7 @@ The website showcases my skills, projects, experience, and leadership activities
 ---
 
 ## 📂 Project Structure
-
+```
 portfolio/
 ├── index.html
 ├── package.json
@@ -48,7 +48,7 @@ portfolio/
 │ └── lib/
 │ └── utils.js
 
-
+```
 ---
 
 ## 🎨 Features
@@ -70,15 +70,15 @@ portfolio/
 
 ### Installation
 
-```bash
-git clone https://github.com/your-username/portfolio.git
+```
+git clone https://github.com/isha54ry/Portfolio-Website.git
 cd portfolio
 npm install
 ```
 
 ### Run locally
 
-```bash
+```
 npm run dev
 ```
 
@@ -95,13 +95,6 @@ Global layout: src/App.jsx
 Sections: src/components/
 
 UI elements: src/components/ui/
-
-👩‍💻 Author
-
-Isha Raj
-
-
-📫 Feel free to connect on LinkedIn or explore my projects on GitHub.
 
 
 # React + Vite
@@ -120,3 +113,10 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+👩‍💻 Author
+
+Isha Raj
+
+
+📫 Feel free to connect on LinkedIn or explore my projects on GitHub.

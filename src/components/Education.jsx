@@ -41,7 +41,7 @@ const Education = () => {
                   </div>
                   <div className="flex items-center gap-1">
                     <Calendar className="w-4 h-4" />
-                    <span>2021 - 2025</span>
+                    <span>2022 - 2026</span>
                   </div>
                 </div>
               </div>

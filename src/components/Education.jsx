@@ -4,8 +4,24 @@ import { GraduationCap, MapPin, Calendar, BookOpen } from 'lucide-react';
 
 const Education = () => {
   return (
-    <section id="education" className="py-20 px-6 bg-[#F8FAFC]">
-      <div className="container mx-auto">
+    <section
+      id="education"
+      className="py-20 px-6 bg-[#F8FAFC] relative overflow-hidden"
+    >
+      {/* Darker gradient background */}
+      <div
+        className="absolute inset-0 w-full h-full z-0"
+        style={{
+          background:
+            'linear-gradient(120deg, #F1F5F9 40%, #38BDF8 100%, #8f5cff 120%)',
+          opacity: 0.28,
+          pointerEvents: 'none',
+        }}
+        aria-hidden="true"
+      />
+      {/* Gradient trail effect */}
+      <GradientTrail />
+      <div className="container mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -16,7 +32,9 @@ const Education = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[#020617] bg-gradient-to-r from-[#0F172A] to-[#334155] bg-clip-text text-transparent">
             Education <span className="text-[#38BDF8]">&</span> Academics
           </h2>
-          <p className="text-[#334155] text-lg">My academic background and qualifications</p>
+          <p className="text-[#334155] text-lg">
+            My academic background and qualifications
+          </p>
         </motion.div>
 
         <motion.div
@@ -32,8 +50,12 @@ const Education = () => {
                 <GraduationCap className="w-8 h-8 text-[#38BDF8]" />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-[#0F172A] mb-2">KIIT University</h3>
-                <p className="text-lg font-medium text-[#334155] mb-2">B.Tech in Computer Science and Engineering</p>
+                <h3 className="text-2xl font-bold text-[#0F172A] mb-2">
+                  KIIT University
+                </h3>
+                <p className="text-lg font-medium text-[#334155] mb-2">
+                  B.Tech in Computer Science and Engineering
+                </p>
                 <div className="flex flex-wrap gap-4 text-[#64748B] text-sm mb-4">
                   <div className="flex items-center gap-1">
                     <MapPin className="w-4 h-4" />
@@ -47,24 +69,58 @@ const Education = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="mt-6 pt-6 border-t border-[#E2E8F0]">
-             <div className="flex items-start gap-3">
-                <BookOpen className="w-5 h-5 text-[#38BDF8] mt-1 shrink-0" />
-                <div>
-                  <h4 className="font-semibold text-[#0F172A] mb-2">Relevant Coursework</h4>
-                  <p className="text-[#334155] leading-relaxed">
-                    Data Structures and Algorithms, Object-Oriented Programming, Database Management Systems, 
-                    Operating Systems, Computer Networks, Software Engineering, Machine Learning, Artificial Intelligence, 
-                    Web Technologies.
-                  </p>
-                </div>
-             </div>
+            <div className="flex items-start gap-3">
+              <BookOpen className="w-5 h-5 text-[#38BDF8] mt-1 shrink-0" />
+              <div>
+                <h4 className="font-semibold text-[#0F172A] mb-2">
+                  Relevant Coursework
+                </h4>
+                <p className="text-[#334155] leading-relaxed">
+                  Data Structures and Algorithms, Object-Oriented Programming,
+                  Database Management Systems, Operating Systems, Computer
+                  Networks, Software Engineering, Machine Learning, Artificial
+                  Intelligence, Web Technologies.
+                </p>
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>
     </section>
   );
 };
+
+function GradientTrail() {
+  React.useEffect(() => {
+    // Use a single, light blue trail
+    const div = document.createElement('div');
+    div.style.position = 'fixed';
+    div.style.pointerEvents = 'none';
+    div.style.width = '36px';
+    div.style.height = '36px';
+    div.style.borderRadius = '50%';
+    div.style.background = 'rgba(56,189,248,0.38)'; // light blue with some opacity (#38BDF8)
+    div.style.filter = 'blur(14px)';
+    div.style.zIndex = 50;
+    div.style.transition = 'transform 0.12s cubic-bezier(.17,.67,.83,.67)';
+    div.style.opacity = '0.7';
+    div.style.left = '0px';
+    div.style.top = '0px';
+    document.body.appendChild(div);
+
+    const move = (e) => {
+      div.style.transform = `translate(${e.clientX - 18}px,${e.clientY - 18}px)`;
+    };
+    window.addEventListener('mousemove', move);
+
+    return () => {
+      window.removeEventListener('mousemove', move);
+      document.body.removeChild(div);
+    };
+  }, []);
+  return null;
+}
 
 export default Education;
